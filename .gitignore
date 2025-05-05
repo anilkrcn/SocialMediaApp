@@ -1,0 +1,12 @@
+# Swift Paketleri
+.build/
+Packages/
+
+# Xcode
+DerivedData/
+.idea/
+*.xcuserdatad
+*.xcuserdata
+
+# MacOS
+.DS_Store
