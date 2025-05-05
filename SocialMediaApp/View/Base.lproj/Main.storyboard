@@ -217,41 +217,62 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZC-Hm-qNK">
                                 <rect key="frame" x="50" y="429" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pj3-fR-Vwh">
-                                <rect key="frame" x="260" y="489" width="84" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBh-eW-3QK">
                                 <rect key="frame" x="50" y="581" width="294" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LeN-Za-IfO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Incorrect E-Mail or Password " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-5F-KC8">
+                                <rect key="frame" x="50" y="471" width="294" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4ZZ-UB-n3t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <color key="textColor" red="0.88150376080000004" green="0.13554062119999999" blue="0.1291575995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pj3-fR-Vwh">
+                                <rect key="frame" x="260" y="500" width="84" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Na-Gp-i3h"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bBh-eW-3QK" secondAttribute="bottom" constant="202" id="5rR-pz-G30"/>
-                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="74" id="69K-mj-RhI"/>
-                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="top" secondItem="Rfc-Lv-94M" secondAttribute="bottom" constant="35" id="BIw-JH-OQa"/>
-                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="leading" secondItem="bBh-eW-3QK" secondAttribute="leading" id="C73-lT-usi"/>
-                            <constraint firstItem="bBh-eW-3QK" firstAttribute="top" secondItem="pj3-fR-Vwh" secondAttribute="bottom" constant="57" id="F5W-Fz-UKN"/>
-                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="FIS-2x-gVn"/>
-                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="260" id="Gdl-Cl-oya"/>
-                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="leading" secondItem="cZC-Hm-qNK" secondAttribute="leading" id="MOb-B2-Kaw"/>
-                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="trailing" secondItem="pj3-fR-Vwh" secondAttribute="trailing" id="Nqd-CH-Zvh"/>
-                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WIr-2f-7uf"/>
-                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="top" secondItem="cZC-Hm-qNK" secondAttribute="bottom" constant="26" id="Xbr-YT-fMC"/>
-                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="trailing" secondItem="bBh-eW-3QK" secondAttribute="trailing" id="YwW-Va-Siw"/>
-                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dxZ-OZ-I5c"/>
-                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="153" id="vSN-Gr-l2P"/>
-                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="trailing" secondItem="cZC-Hm-qNK" secondAttribute="trailing" id="wVB-o6-Xvi"/>
+                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="top" secondItem="vq5-5F-KC8" secondAttribute="bottom" constant="8" id="4IS-Ip-uHG"/>
+                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="trailing" secondItem="bBh-eW-3QK" secondAttribute="trailing" id="58b-D3-oej"/>
+                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="74" id="9Aj-Jx-v5b"/>
+                            <constraint firstItem="bBh-eW-3QK" firstAttribute="top" secondItem="pj3-fR-Vwh" secondAttribute="bottom" constant="46" id="9cn-Jv-S1H"/>
+                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="leading" secondItem="vq5-5F-KC8" secondAttribute="leading" id="Cbm-hp-rPA"/>
+                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F8Q-WW-vMg"/>
+                            <constraint firstItem="vq5-5F-KC8" firstAttribute="leading" secondItem="bBh-eW-3QK" secondAttribute="leading" id="GRr-BX-mUg"/>
+                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="leading" secondItem="cZC-Hm-qNK" secondAttribute="leading" id="HQE-LS-gaY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bBh-eW-3QK" secondAttribute="bottom" constant="226" id="SkM-Dw-Vy5"/>
+                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="trailing" secondItem="cZC-Hm-qNK" secondAttribute="trailing" id="bE9-5m-Xlq"/>
+                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="bqd-Ll-tiR"/>
+                            <constraint firstItem="Rfc-Lv-94M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gTH-fg-WWG"/>
+                            <constraint firstItem="vq5-5F-KC8" firstAttribute="trailing" secondItem="pj3-fR-Vwh" secondAttribute="trailing" id="hDq-rj-ZoY"/>
+                            <constraint firstItem="k2k-ZV-e2R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="212" id="i7F-bg-Q4Z"/>
+                            <constraint firstItem="pj3-fR-Vwh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="260" id="kaS-Mr-HNs"/>
+                            <constraint firstItem="vq5-5F-KC8" firstAttribute="top" secondItem="cZC-Hm-qNK" secondAttribute="bottom" constant="8" id="lO7-k5-7hH"/>
+                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="top" secondItem="Rfc-Lv-94M" secondAttribute="bottom" constant="35" id="tUj-bj-Rxj"/>
+                            <constraint firstItem="cZC-Hm-qNK" firstAttribute="trailing" secondItem="vq5-5F-KC8" secondAttribute="trailing" id="yU4-Qu-fZZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tIf-hs-uJL"/>
                     <connections>
+                        <outlet property="alertLabel" destination="vq5-5F-KC8" id="gtV-wW-ZCg"/>
+                        <outlet property="emailTextField" destination="Rfc-Lv-94M" id="Y5g-Ba-k8y"/>
+                        <outlet property="passwordTextField" destination="cZC-Hm-qNK" id="zSP-qt-GcY"/>
                         <segue destination="jJ0-gU-rV7" kind="show" identifier="ToFeedSegue" id="fFt-Tu-ZvR"/>
                     </connections>
                 </viewController>
@@ -265,7 +286,7 @@
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="117" height="128"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
