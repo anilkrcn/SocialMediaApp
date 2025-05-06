@@ -1,19 +1,10 @@
-//
-//  ViewController.swift
-//  SocialMediaApp
-//
-//  Created by Anıl Karacan on 5.05.2025.
-//
-
 import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var alertLabel: UILabel!
     
     override func viewDidLoad() {
@@ -34,6 +25,7 @@ class LoginViewController: UIViewController {
                     self.alertLabel.isHidden = false
                     self.alertLabel.text = e.localizedDescription
                 }else{
+                    self.performSegue(withIdentifier: "ToFeedSegue", sender: nil)
                     print("Kullanıcı girişi başarılı")
                 }
             }
@@ -42,22 +34,27 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text{
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let e = error{
-                    print(e.localizedDescription)
-                    self.alertLabel.isHidden = false
-                    self.alertLabel.text = e.localizedDescription
-                }else{
-                    print("Kullanıcı kaydı başarılı")
+        if (passwordTextField.text!.count) > 8{
+            if let email = emailTextField.text, let password = passwordTextField.text{
+                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                    if let e = error{
+                        print(e.localizedDescription)
+                        self.alertLabel.isHidden = false
+                        self.alertLabel.text = e.localizedDescription
+                    }else{
+                        self.performSegue(withIdentifier: "ToFeedSegue", sender: nil)
+                        print("Kullanıcı kaydı başarılı")
+                    }
                 }
             }
+        }else{
+            alertLabel.text = "Şifre en az 8 karakterden oluşmalıdır"
+            alertLabel.isHidden = false
         }
+        
     }
     
     
     
-    
-
 }
 
