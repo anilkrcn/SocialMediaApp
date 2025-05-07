@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
@@ -15,7 +16,27 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func logOutButtonPressed(_ sender: UIButton) {
+       
+        do {
+          try Auth.auth().signOut()
+            let loginVC = LoginViewController()
+                    let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+                    window?.rootViewController = loginVC
+                    window?.makeKeyAndVisible()
+            UIView.transition(with: window!,
+                                      duration: 0.3,
+                                      options: .transitionFlipFromLeft,
+                                      animations: nil,
+                                      completion: nil)
+            //performSegue(withIdentifier: "LogOutSegue", sender: nil)
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+    }
+    
+}
+    
     /*
     // MARK: - Navigation
 
@@ -26,4 +47,4 @@ class SettingsViewController: UIViewController {
     }
     */
 
-}
+

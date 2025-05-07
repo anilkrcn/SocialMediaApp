@@ -15,15 +15,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var uploadTextField: UITextField!
+    var imageURL : URL?
     
-    var posts: [Post] = []
+    let db = Firestore.firestore()
+    //var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
     
     @IBAction func imageButtonPressed(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -34,12 +35,15 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let selectedImage = info[.editedImage] as? UIImage {
+        if let selectedImage = info[.editedImage] as? UIImage, let selectedImageURL = info[.imageURL] as? URL{
                 imageView.image = selectedImage
                 imageButton.isHidden = true
-            } else if let originalImage = info[.originalImage] as? UIImage {
+                imageURL = selectedImageURL
+                //print(imageURL)
+        } else if let originalImage = info[.originalImage] as? UIImage, let originalImageURL = info[.imageURL] as? URL {
                 imageView.image = originalImage
                 imageButton.isHidden = true
+                imageURL = originalImageURL
             }
             dismiss(animated: true, completion: nil)
         }
@@ -49,8 +53,42 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        print("Your post has been shared!")
+        if let publisher = Auth.auth().currentUser?.email {
+            db.collection("posts").addDocument(data: [
+                "imageURL": imageURL!.absoluteString,
+                "usermail": publisher,
+                "likes": 0,
+                "captionText": uploadTextField.text ?? ""
+            ]){(error) in
+                if let e = error{
+                    print("There was an issue saving data to firestore, \(e)")
+                }else{
+                    print("Succesfully saved data")
+                    DispatchQueue.main.async {
+                        self.imageButton.isHidden = false
+                        self.imageView.image = nil
+                    }
+                }
+            }
+        }
     }
+    
+    func saveImageToDocumentsDirectory(imageURL: URL) -> URL? {
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationURL = documentsDirectory.appendingPathComponent(imageURL.lastPathComponent)
+
+        do {
+            if !fileManager.fileExists(atPath: destinationURL.path) {
+                try fileManager.copyItem(at: imageURL, to: destinationURL)
+            }
+            return destinationURL
+        } catch {
+            print("Görsel kopyalanamadı: \(error)")
+            return nil
+        }
+    }
+
     
     /*
     // MARK: - Navigation
